@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SEM_NAMES, YEAR_NAMES, type Semester, type Year } from "@/lib/curriculum";
 import { useStore } from "@/lib/store";
-import { ProgressRing } from "./index";
+import { ProgressRing } from "@/components/Bits";
 
 export const Route = createFileRoute("/profile")({
   head: () => ({

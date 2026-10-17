@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Check, CircleHelp, X } from "lucide-react";
+=======
+import { Check, CircleHelp, Lock, X } from "lucide-react";
+>>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
 import { useState } from "react";
 import type { ExamSession, Question } from "@/lib/ee-content";
 import { useStore } from "@/lib/store";
@@ -33,7 +37,11 @@ export function Pills<T extends string>({ items, value, onChange, label }: { ite
 
 /** Renders a list of questions under exam or review rules. attemptKey identifies a single exam attempt. */
 export function QuestionSet({ questions, mode, attemptKey, sessions }: { questions: Question[]; mode: Mode; attemptKey: string; sessions: ExamSession[] }) {
+<<<<<<< HEAD
   const { attempts, setAnswer, submitAttempt, resetAttempt } = useStore();
+=======
+  const { attempts, setAnswer, submitAttempt } = useStore();
+>>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
   const attempt = attempts[attemptKey] ?? { answers: {}, submitted: false };
   const [confirming, setConfirming] = useState(false);
   const examLocked = mode === "exam" && attempt.submitted;
@@ -51,6 +59,7 @@ export function QuestionSet({ questions, mode, attemptKey, sessions }: { questio
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-ink-gradient p-5 text-ink-foreground">
           <div>
             <p className="text-sm text-ink-muted">نتيجتك في هذه المحاولة</p>
+<<<<<<< HEAD
             <p className="num font-display text-3xl">
               {score} / {graded.length}
             </p>
@@ -63,6 +72,11 @@ export function QuestionSet({ questions, mode, attemptKey, sessions }: { questio
           >
             إعادة المحاولة
           </button>
+=======
+            <p className="num font-display text-3xl">{score} / {graded.length}</p>
+          </div>
+          <span className="inline-flex items-center gap-1.5 text-sm text-ink-muted"><Lock className="h-4 w-4" /> المحاولة مقفلة ولا يمكن إعادتها</span>
+>>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
         </div>
       )}
       {questions.map((q, i) => {

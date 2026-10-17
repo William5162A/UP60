@@ -19,7 +19,11 @@ interface State {
 
 // Sample student state (illustrative).
 const DEFAULT: State = {
+<<<<<<< HEAD
   studentName: "وليم عربش",
+=======
+  studentName: "ليان الأحمد",
+>>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
   purchased: [FEATURED_ID, "y1s1-06", "y1s1-05"],
   completed: ["ee-l01", "ee-l02", "ee-l03"],
   year: 1,
@@ -40,7 +44,10 @@ interface Ctx extends State {
   setTheme: (t: "light" | "dark") => void;
   setAnswer: (key: string, qid: string, idx: number) => void;
   submitAttempt: (key: string) => void;
+<<<<<<< HEAD
   resetAttempt: (key: string) => void;
+=======
+>>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
   totals: { lessonsDone: number; lessonsTotal: number; progress: number; examQuestions: number };
 }
 
@@ -110,6 +117,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         progress: lessonsTotal ? Math.round((lessonsDone / lessonsTotal) * 100) : 0,
         examQuestions,
       },
+<<<<<<< HEAD
       resetAttempt: (key) =>
         update((s) => {
           const attempts = { ...s.attempts };
@@ -117,6 +125,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
           return { ...s, attempts };
         }),
+=======
+>>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
     };
   }, [state, ready, update]);
 

@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Subject data lives only in src/lib/curriculum.ts; subject content in src/lib/ee-content.ts; app state (purchases, progress, attempts, theme) in src/lib/store.tsx via localStorage — no backend by user request.

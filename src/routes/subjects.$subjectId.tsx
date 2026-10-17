@@ -283,7 +283,7 @@ function Exams({ subjectId, mode, setMode }: { subjectId: string; mode: Mode; se
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <button onClick={() => setScope(null)} className="inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground hover:text-foreground">
-            <ArrowRight className="h-4 w-4" /> كل الجلسات
+            <ArrowRight className="h-4 w-4" /> العودة لاختيار الدورة
           </button>
           <h3 className="mt-1 text-xl font-bold">{se ? `${se.name} ${se.academicYear}` : "كل الدورات"}</h3>
         </div>

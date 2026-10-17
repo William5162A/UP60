@@ -1,0 +1,152 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * مِداد design system — midnight ink foundation, mint accent, warm paper surfaces.
+ * All colors are oklch. Register new tokens in @theme inline.
+ */
+
+@theme inline {
+  --font-sans: "Cairo", system-ui, sans-serif;
+  --font-display:   sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-violet: var(--violet);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.975 0.008 85);
+  --foreground: oklch(0.22 0.05 270);
+  --surface: oklch(0.955 0.012 85);
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.22 0.05 270);
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.22 0.05 270);
+  --primary: oklch(0.32 0.11 272);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.93 0.02 272);
+  --secondary-foreground: oklch(0.3 0.1 272);
+  --muted: oklch(0.94 0.012 85);
+  --muted-foreground: oklch(0.5 0.03 270);
+  --accent: oklch(0.8 0.13 168);
+  --accent-foreground: oklch(0.24 0.06 200);
+  --ink: oklch(0.24 0.08 272);
+  --ink-foreground: oklch(0.97 0.012 85);
+  --ink-muted: oklch(0.78 0.04 272);
+  --violet: oklch(0.6 0.16 295);
+  --success: oklch(0.55 0.13 160);
+  --success-soft: oklch(0.94 0.05 160);
+  --warning: oklch(0.65 0.14 70);
+  --warning-soft: oklch(0.95 0.05 80);
+  --destructive: oklch(0.56 0.2 25);
+  --destructive-soft: oklch(0.95 0.035 25);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.89 0.015 85);
+  --input: oklch(0.87 0.018 85);
+  --ring: oklch(0.55 0.12 272);
+  --shadow-soft: 0 1px 2px oklch(0.3 0.05 270 / 6%), 0 8px 24px -12px oklch(0.3 0.08 270 / 18%);
+  --shadow-lift: 0 18px 40px -20px oklch(0.25 0.1 272 / 40%);
+  --gradient-ink: radial-gradient(120% 140% at 100% 0%, oklch(0.36 0.13 280) 0%, oklch(0.24 0.08 272) 55%, oklch(0.2 0.06 260) 100%);
+}
+
+.dark {
+  --background: oklch(0.17 0.03 270);
+  --foreground: oklch(0.94 0.012 85);
+  --surface: oklch(0.2 0.035 270);
+  --card: oklch(0.225 0.04 270);
+  --card-foreground: oklch(0.94 0.012 85);
+  --popover: oklch(0.24 0.04 270);
+  --popover-foreground: oklch(0.94 0.012 85);
+  --primary: oklch(0.82 0.12 168);
+  --primary-foreground: oklch(0.2 0.05 220);
+  --secondary: oklch(0.28 0.05 272);
+  --secondary-foreground: oklch(0.9 0.03 272);
+  --muted: oklch(0.25 0.035 270);
+  --muted-foreground: oklch(0.7 0.03 270);
+  --accent: oklch(0.78 0.12 168);
+  --accent-foreground: oklch(0.2 0.05 220);
+  --ink: oklch(0.27 0.07 275);
+  --ink-foreground: oklch(0.96 0.012 85);
+  --ink-muted: oklch(0.76 0.04 272);
+  --violet: oklch(0.72 0.14 295);
+  --success: oklch(0.75 0.14 160);
+  --success-soft: oklch(0.3 0.06 160);
+  --warning: oklch(0.8 0.13 80);
+  --warning-soft: oklch(0.3 0.06 70);
+  --destructive: oklch(0.7 0.17 25);
+  --destructive-soft: oklch(0.3 0.07 25);
+  --destructive-foreground: oklch(0.15 0.03 25);
+  --border: oklch(0.32 0.04 270);
+  --input: oklch(0.34 0.04 270);
+  --ring: oklch(0.78 0.12 168);
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 30%), 0 10px 30px -14px oklch(0 0 0 / 60%);
+  --shadow-lift: 0 20px 44px -20px oklch(0 0 0 / 70%);
+  --gradient-ink: radial-gradient(120% 140% at 100% 0%, oklch(0.34 0.1 285) 0%, oklch(0.25 0.07 272) 55%, oklch(0.21 0.05 262) 100%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+}
+
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-lift { box-shadow: var(--shadow-lift); }
+@utility bg-ink-gradient { background: var(--gradient-ink); }
+
+/* Geometric girih-inspired motif used on ink surfaces */
+@utility motif {
+  background-image:
+    linear-gradient(45deg, oklch(1 0 0 / 5%) 1px, transparent 1px),
+    linear-gradient(-45deg, oklch(1 0 0 / 5%) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@utility equation {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@utility num { font-variant-numeric: tabular-nums; }

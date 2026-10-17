@@ -64,7 +64,7 @@ function Home() {
               key={st.label}
               to={st.to}
               params={{ subjectId: FEATURED_ID }}
-              search={st.sub ? { tab: st.sub } : undefined}
+              search={(st.sub ? { tab: st.sub } : {}) as never}
               className={`group flex min-w-0 flex-col justify-between rounded-2xl border border-border p-4 shadow-soft transition hover:-translate-y-0.5 sm:p-5 ${i === 0 ? "bg-accent text-accent-foreground" : "bg-card"}`}
             >
               <st.icon className="h-5 w-5 opacity-70" />

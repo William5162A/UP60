@@ -7,7 +7,7 @@ export interface Lesson {
   objectives: string[];
   sections: { heading: string; body: string }[];
   equations: { label: string; expr: string; note?: string }[];
-  example?: { problem: string; solution: string[] };
+  example?: { problem: string; solution: string[] } | undefined;
   summary: string;
 }
 
@@ -27,7 +27,7 @@ export interface Question {
   text: string;
   options: string[];
   correct: number | null;
-  explanation?: string;
+  explanation?: string | undefined;
 }
 
 const L = (

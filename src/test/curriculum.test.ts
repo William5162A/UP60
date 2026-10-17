@@ -12,7 +12,7 @@ describe("curriculum", () => {
   it("places أسس الهندسة الكهربائية once in Y1 S2", () => {
     const e = SUBJECTS.filter((s) => s.name === "أسس الهندسة الكهربائية");
     expect(e).toHaveLength(1);
-    expect([e[0].year, e[0].semester]).toEqual([1, 2]);
+    expect([e[0]!.year, e[0]!.semester]).toEqual([1, 2]);
   });
   it("recommends current then earlier semesters, never future, excluding purchased", () => {
     const r = recommend(3, 1, new Set(["y3s1-01"]));

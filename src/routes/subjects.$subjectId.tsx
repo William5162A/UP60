@@ -16,9 +16,10 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 export const Route = createFileRoute("/subjects/$subjectId")({
-  validateSearch: (s: Record<string, unknown>): { tab?: Tab } => ({
-    tab: s.tab === "exams" || s.tab === "practice" || s.tab === "lessons" ? s.tab : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { tab?: Tab | undefined } => {
+    const t = s["tab"];
+    return { tab: t === "exams" || t === "practice" || t === "lessons" ? t : undefined };
+  },
   loader: ({ params }) => {
     const subject = subjectById(params.subjectId);
     if (!subject) throw notFound();
@@ -55,7 +56,7 @@ function SubjectPage() {
     const dir = e.key === "ArrowLeft" ? 1 : e.key === "ArrowRight" ? -1 : 0; // RTL: left = next
     if (!dir) return;
     const n = (i + dir + TABS.length) % TABS.length;
-    setTab(TABS[n].id);
+    setTab(TABS[n]!.id);
     tabRefs.current[n]?.focus();
   };
 
@@ -154,7 +155,7 @@ function Lessons({ lessons }: { lessons: Lesson[] }) {
   const [activeId, setActiveId] = useState(() => lessons.find((l) => !completed.includes(l.id))?.id ?? lessons[0]?.id);
   if (!lessons.length) return <Empty text="سيُضاف محتوى هذه المادة قريبًا." />;
   const idx = Math.max(0, lessons.findIndex((l) => l.id === activeId));
-  const l = lessons[idx];
+  const l = lessons[idx]!;
   const done = completed.includes(l.id);
   return (
     <div className="grid gap-6 lg:grid-cols-[18rem_minmax(0,1fr)]">
@@ -223,7 +224,7 @@ function Lessons({ lessons }: { lessons: Lesson[] }) {
             <Check className="h-4 w-4" /> {done ? "مكتمل — إلغاء الإكمال" : "تحديد كمكتمل"}
           </button>
           {idx < lessons.length - 1 && (
-            <button onClick={() => setActiveId(lessons[idx + 1].id)} className="inline-flex items-center gap-1 text-sm font-bold text-primary">
+            <button onClick={() => setActiveId(lessons[idx + 1]!.id)} className="inline-flex items-center gap-1 text-sm font-bold text-primary">
               الدرس التالي <ChevronLeft className="h-4 w-4" />
             </button>
           )}

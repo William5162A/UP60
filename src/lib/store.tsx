@@ -1,4 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import { FEATURED_ID, type Semester, type Year } from "./curriculum";
 import { CONTENT } from "./ee-content";
 
@@ -19,11 +27,7 @@ interface State {
 
 // Sample student state (illustrative).
 const DEFAULT: State = {
-<<<<<<< HEAD
   studentName: "وليم عربش",
-=======
-  studentName: "ليان الأحمد",
->>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
   purchased: [FEATURED_ID, "y1s1-06", "y1s1-05"],
   completed: ["ee-l01", "ee-l02", "ee-l03"],
   year: 1,
@@ -44,10 +48,7 @@ interface Ctx extends State {
   setTheme: (t: "light" | "dark") => void;
   setAnswer: (key: string, qid: string, idx: number) => void;
   submitAttempt: (key: string) => void;
-<<<<<<< HEAD
   resetAttempt: (key: string) => void;
-=======
->>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
   totals: { lessonsDone: number; lessonsTotal: number; progress: number; examQuestions: number };
 }
 
@@ -91,11 +92,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       ...state,
       ready,
       isPurchased: (id) => owned.has(id),
-      purchase: (id) => update((s) => (s.purchased.includes(id) ? s : { ...s, purchased: [...s.purchased, id] })),
+      purchase: (id) =>
+        update((s) => (s.purchased.includes(id) ? s : { ...s, purchased: [...s.purchased, id] })),
       toggleLesson: (lid) =>
         update((s) => ({
           ...s,
-          completed: s.completed.includes(lid) ? s.completed.filter((x) => x !== lid) : [...s.completed, lid],
+          completed: s.completed.includes(lid)
+            ? s.completed.filter((x) => x !== lid)
+            : [...s.completed, lid],
         })),
       setYear: (year) => update((s) => ({ ...s, year })),
       setSemester: (semester) => update((s) => ({ ...s, semester })),
@@ -104,7 +108,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         update((s) => {
           const a = s.attempts[key] ?? { answers: {}, submitted: false };
           if (a.submitted) return s;
-          return { ...s, attempts: { ...s.attempts, [key]: { ...a, answers: { ...a.answers, [qid]: idx } } } };
+          return {
+            ...s,
+            attempts: { ...s.attempts, [key]: { ...a, answers: { ...a.answers, [qid]: idx } } },
+          };
         }),
       submitAttempt: (key) =>
         update((s) => {
@@ -117,7 +124,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         progress: lessonsTotal ? Math.round((lessonsDone / lessonsTotal) * 100) : 0,
         examQuestions,
       },
-<<<<<<< HEAD
       resetAttempt: (key) =>
         update((s) => {
           const attempts = { ...s.attempts };
@@ -125,8 +131,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
           return { ...s, attempts };
         }),
-=======
->>>>>>> addab52419ee18a1d3681662e3c5e4dffb7fd078
     };
   }, [state, ready, update]);
 

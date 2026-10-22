@@ -10,6 +10,7 @@ const NAV = [
   { to: "/purchases", label: "مشترياتي", icon: ShoppingBag, exact: false },
   { to: "/profile", label: "ملفي الشخصي", icon: User, exact: false },
 ] as const;
+// ll
 
 export function ThemeToggle() {
   const { theme, setTheme } = useStore();

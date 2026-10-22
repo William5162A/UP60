@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { BookOpen, Home, Moon, ShoppingBag, Sun, User } from "lucide-react";
 import type { ReactNode } from "react";
 import { BRAND } from "@/lib/brand";
@@ -27,6 +27,14 @@ export function ThemeToggle() {
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+
+  if (pathname === "/login") {
+    return <>{children}</>;
+  }
+
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur">
@@ -37,7 +45,10 @@ export function AppShell({ children }: { children: ReactNode }) {
             </span>
             <span className="truncate font-display text-2xl text-foreground">{BRAND}</span>
           </Link>
-          <nav aria-label="التنقل الرئيسي" className="hidden items-center gap-1 rounded-full border border-border bg-card p-1 md:flex">
+          <nav
+            aria-label="التنقل الرئيسي"
+            className="hidden items-center gap-1 rounded-full border border-border bg-card p-1 md:flex"
+          >
             {NAV.map((n) => (
               <Link
                 key={n.to}
@@ -53,7 +64,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 pb-28 pt-6 sm:px-6 md:pb-16 md:pt-10">{children}</main>
+      <main className="mx-auto max-w-6xl px-4 pb-28 pt-6 sm:px-6 md:pb-16 md:pt-10">
+        {children}
+      </main>
 
       <nav
         aria-label="التنقل السفلي"
